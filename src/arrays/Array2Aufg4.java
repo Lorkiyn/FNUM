@@ -21,8 +21,14 @@ public class Array2Aufg4 {
 		for ( int zeile=0; zeile < data.length; zeile++) {
 
 			for ( int spalte = 0; spalte < data[zeile].length; spalte++){
-				if (data[zeile][spalte] < minima) minima = data[zeile][spalte];
-				if (data[zeile][spalte] > maxima) maxima = data[zeile][spalte];
+				if (data[zeile][spalte] < minima) {
+					minima = data[zeile][spalte];
+				}
+				
+				if (data[zeile][spalte] > maxima) {
+					maxima = data[zeile][spalte];
+				}
+				
 			}
 
 		}

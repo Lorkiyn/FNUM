@@ -21,6 +21,7 @@ public class Array2Aufg3 {
 
 			for ( int spalte = 0; spalte < data[zeile].length; spalte++){
 				sumArray[spalte] += data[zeile][spalte];
+				
 			}
 
 		}

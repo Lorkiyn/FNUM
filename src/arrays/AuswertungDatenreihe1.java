@@ -1,9 +1,5 @@
 package arrays;
 
-import java.util.Arrays;
-
-import IOClass.IO;
-
 public class AuswertungDatenreihe1 { // 5 8 6 3 12 3 = 37 arith = 6,167 varianz = 9,8056
 	
 	public static void main(String args[]) {

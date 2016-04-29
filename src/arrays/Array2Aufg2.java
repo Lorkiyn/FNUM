@@ -26,7 +26,10 @@ public class Array2Aufg2 {
 		}
 
 		// Summe ausgeben
-		for (int i = 0; i < sumArray.length;i++) System.out.println(i+1 +". Summe Zeile: " +sumArray[i]);
+		for (int i = 0; i < sumArray.length;i++) {
+			System.out.println(i+1 +". Summe Zeile: " +sumArray[i]);
+		
+		}
 
 
 	}
