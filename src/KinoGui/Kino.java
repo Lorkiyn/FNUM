@@ -1,4 +1,4 @@
-package arrays;
+package KinoGui;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -38,7 +38,11 @@ public class Kino {
 	private static void printSeats(int row, int chair) throws IOException {
 		System.out.println("\nBelegte Sitze:\n");
 		for (int r = 0; r < chair; r++) {
-			System.out.print("  " +(r+1));
+			if (r < 10) {
+				System.out.print("  " +(r+1));
+			} else {
+				System.out.print(" " +(r+1));
+			}
 		}
 		System.out.println("");
 		for (int r = 0; r < row; r++) {
@@ -58,7 +62,7 @@ public class Kino {
 				+ "\n[3]Belegte plätze azeigen."
 				+ "\n[4]Program beenden.");
 
-		System.out.print("\nWas möchten Sie tuhen: ");
+		System.out.print("\nWas möchten Sie tun: ");
 		int i = IO.readInt(0);
 
 		if (i < cinema.length && i >= 0) {
@@ -76,6 +80,7 @@ public class Kino {
 
 			case 3:
 				printSeats(row, chair);
+				choose(row, chair);
 				break;
 
 			case 4:
@@ -101,11 +106,17 @@ public class Kino {
 		System.out.print("In der Reihe: ");
 		int x = sc.nextInt();
 
-		if (cinema[x-1][y-1].equals("O")) {
-			cinema[x - 1][y - 1] = "X";
-			printSeats(row, chair);
+		if (x >= 0 && y >= 0 && x <= row && y <= chair) {
+			if (cinema[x-1][y-1].equals("O")) {
+				cinema[x - 1][y - 1] = "X";
+				printSeats(row, chair);
+			} else {
+				System.out.println("Der Sitz ist bereits belegt, bitte wählen sie einen anderen.");
+				blockSeat(row, chair);
+			}
+			
 		} else {
-			System.out.println("Der Sitz ist bereits belegt, bitte wählen sie einen anderen.");
+			System.out.println("Die Zahl ist ncht aktzeptabel.");
 			blockSeat(row, chair);
 		}
 
