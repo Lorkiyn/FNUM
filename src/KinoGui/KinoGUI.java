@@ -10,10 +10,12 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JSeparator;
 
 public class KinoGUI extends JFrame {
 
@@ -24,10 +26,8 @@ public class KinoGUI extends JFrame {
 	private JLabel lblChair;
 	private JTextField textFieldChair;
 	private JButton btnGo;
+	private JSeparator separator;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -41,9 +41,6 @@ public class KinoGUI extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public KinoGUI() {
 		setTitle("Kino");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -56,18 +53,18 @@ public class KinoGUI extends JFrame {
 		lblTitle = new JLabel("Gr\u00F6\u00DFe des Kinosaals");
 		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTitle.setBounds(10, 11, 225, 30);
+		lblTitle.setBounds(10, 11, 225, 20);
 		contentPane.add(lblTitle);
 
 
-		lblRow = new JLabel("Reihen");
+		lblRow = new JLabel("Reihen:");
 		lblRow.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblRow.setBounds(10, 52, 65, 14);
+		lblRow.setBounds(10, 52, 105, 14);
 		contentPane.add(lblRow);
 
-		lblChair = new JLabel("Sitze");
+		lblChair = new JLabel("Sitze pro Reihe:");
 		lblChair.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblChair.setBounds(10, 81, 65, 14);
+		lblChair.setBounds(10, 81, 105, 14);
 		contentPane.add(lblChair);
 		
 		textFieldRow = new JTextField();
@@ -92,7 +89,7 @@ public class KinoGUI extends JFrame {
 
 			}
 		});
-		textFieldRow.setBounds(85, 50, 150, 20);
+		textFieldRow.setBounds(125, 50, 110, 20);
 		contentPane.add(textFieldRow);
 		textFieldRow.setColumns(10);
 
@@ -119,7 +116,7 @@ public class KinoGUI extends JFrame {
 			}
 		});
 		textFieldChair.setColumns(10);
-		textFieldChair.setBounds(85, 79, 150, 20);
+		textFieldChair.setBounds(125, 79, 110, 20);
 		contentPane.add(textFieldChair);
 
 		btnGo = new JButton("Anzeigen");
@@ -127,12 +124,25 @@ public class KinoGUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				JFrame frame = new KinoGUIOut();
-				frame.setVisible(true);
+				try {
+					JFrame frame = new KinoGUIOut(Integer.parseInt(textFieldRow.getText()), Integer.parseInt(textFieldChair.getText()));
+					frame.setVisible(true);
+					
+				} catch (NumberFormatException e) {
+					exception("Bitte geben Sie die Größe des Kinosaals an.    ");
+				}
 			}
 			
 		});
 		btnGo.setBounds(10, 106, 224, 54);
 		contentPane.add(btnGo);
+		
+		separator = new JSeparator();
+		separator.setBounds(10, 39, 225, 2);
+		contentPane.add(separator);
+	}
+	
+	private void exception(String text) {
+		JOptionPane.showMessageDialog(this, text, "Eingabefehler", JOptionPane.ERROR_MESSAGE);
 	}
 }

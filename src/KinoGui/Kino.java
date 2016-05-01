@@ -59,7 +59,7 @@ public class Kino {
 		System.out.println("\nAuswahl: "
 				+ "\n[1]Sitz buchen."
 				+ "\n[2]Sitz stonieren."
-				+ "\n[3]Belegte plätze azeigen."
+				+ "\n[3]Plätze azeigen."
 				+ "\n[4]Program beenden.");
 
 		System.out.print("\nWas möchten Sie tun: ");
