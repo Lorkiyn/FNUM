@@ -1,6 +1,8 @@
 package KinoGui;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 import IOClass.IO;
@@ -91,7 +93,7 @@ public class Kino {
 			}
 
 		} else {
-			System.out.println("Bitte eine Zahl zwischen 1 und" +cinema.length  +" angeben.");
+			System.out.println("Bitte eine Zahl zwischen 1 und 4 angeben.");
 			choose(row, chair);
 		}
 
@@ -131,14 +133,28 @@ public class Kino {
 		System.out.print("In der Reihe: ");
 		int x = sc.nextInt();
 
-		if (cinema[x-1][y-1].equals("X")) {
-			cinema[x-1][y-1] = "O";
-			System.out.println("Sitz wurde stoniert.");
-			choose(row, chair);
+		try {
+			if (cinema[x-1][y-1].equals("X")) {
+				cinema[x-1][y-1] = "O";
+				System.out.println("Sitz wurde stoniert.");
+				choose(row, chair);
 
-		} else {
-			System.out.println("Der Sitz ist nicht belegt.");
-			cancelSeat(row, chair);
+			} else {
+				System.out.println("Der Sitz ist nicht belegt.");
+				cancelSeat(row, chair);
+				
+				System.out.println("Möchten Sie den Sitz Buchen: ");
+				boolean block = IO.readBoolean();
+				if (block) {
+					cinema[x-1][y-1] = "X";
+					
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println("Die Zahl ist zu groß.");
+			
 		}
 
 	}
