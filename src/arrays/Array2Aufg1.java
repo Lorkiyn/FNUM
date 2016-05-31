@@ -18,7 +18,7 @@ public class Array2Aufg1 {
 		double sum = 0;
 		// Summe berechnen
 
-		for ( int zeile=0; zeile < data.length; zeile++) {
+		for ( int zeile = 0; zeile < data.length; zeile++) {
 
 			for ( int spalte = 0; spalte < data[zeile].length; spalte++){
 				sum += data[zeile][spalte];
@@ -28,6 +28,7 @@ public class Array2Aufg1 {
 
 		// Summe ausgeben
 		System.out.println(sum);
+		System.out.println(data[0][3]);
 
 
 	}
